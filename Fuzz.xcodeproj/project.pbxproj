@@ -14,6 +14,22 @@
 		041EC2961FBC3B89005EDF48 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 041EC2941FBC3B89005EDF48 /* LaunchScreen.storyboard */; };
 		041EC2A11FBC3B89005EDF48 /* FuzzTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 041EC2A01FBC3B89005EDF48 /* FuzzTests.swift */; };
 		041EC2AC1FBC3B8A005EDF48 /* FuzzUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 041EC2AB1FBC3B8A005EDF48 /* FuzzUITests.swift */; };
+		041EC2C01FBC52BA005EDF48 /* ArticlesCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 041EC2BF1FBC52BA005EDF48 /* ArticlesCollectionView.swift */; };
+		041EC2C21FBC56A2005EDF48 /* ArticlesDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 041EC2C11FBC56A2005EDF48 /* ArticlesDataSource.swift */; };
+		041EC2C81FBC5E44005EDF48 /* ArticleCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 041EC2C71FBC5E44005EDF48 /* ArticleCellView.swift */; };
+		041EC2CA1FBCA949005EDF48 /* ArticleData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 041EC2C91FBCA949005EDF48 /* ArticleData.swift */; };
+		041EC2CC1FBCAD43005EDF48 /* Backend.swift in Sources */ = {isa = PBXBuildFile; fileRef = 041EC2CB1FBCAD43005EDF48 /* Backend.swift */; };
+		04AF35CB1FBCC8C80070FAC1 /* Caches.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04AF35CA1FBCC8C80070FAC1 /* Caches.swift */; };
+		04AF35CD1FBCD5650070FAC1 /* PostalCodeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04AF35CC1FBCD5650070FAC1 /* PostalCodeViewController.swift */; };
+		04AF35CF1FBCD78F0070FAC1 /* ResponseCodes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04AF35CE1FBCD78F0070FAC1 /* ResponseCodes.swift */; };
+		04AF35D11FBD93E40070FAC1 /* ShoppingCartViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04AF35D01FBD93E40070FAC1 /* ShoppingCartViewController.swift */; };
+		04AF35D31FBD985E0070FAC1 /* PickedUpArticleManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04AF35D21FBD985E0070FAC1 /* PickedUpArticleManager.swift */; };
+		04AF35D51FBD9FF80070FAC1 /* InfoDialog.xib in Resources */ = {isa = PBXBuildFile; fileRef = 04AF35D41FBD9FF80070FAC1 /* InfoDialog.xib */; };
+		04AF35D71FBDA16F0070FAC1 /* PopUpView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04AF35D61FBDA16F0070FAC1 /* PopUpView.swift */; };
+		04AF35D91FBDB53D0070FAC1 /* CategoriesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04AF35D81FBDB53D0070FAC1 /* CategoriesView.swift */; };
+		04AF35DB1FBDB7BF0070FAC1 /* CategoryStackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04AF35DA1FBDB7BF0070FAC1 /* CategoryStackView.swift */; };
+		04AF35DD1FBDF3260070FAC1 /* PostOrderViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04AF35DC1FBDF3260070FAC1 /* PostOrderViewController.swift */; };
+		04AF35DF1FBDFB540070FAC1 /* MaxLengthTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04AF35DE1FBDFB530070FAC1 /* MaxLengthTextField.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -47,6 +63,22 @@
 		041EC2A71FBC3B89005EDF48 /* FuzzUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = FuzzUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		041EC2AB1FBC3B8A005EDF48 /* FuzzUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FuzzUITests.swift; sourceTree = "<group>"; };
 		041EC2AD1FBC3B8A005EDF48 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		041EC2BF1FBC52BA005EDF48 /* ArticlesCollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArticlesCollectionView.swift; sourceTree = "<group>"; };
+		041EC2C11FBC56A2005EDF48 /* ArticlesDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArticlesDataSource.swift; sourceTree = "<group>"; };
+		041EC2C71FBC5E44005EDF48 /* ArticleCellView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArticleCellView.swift; sourceTree = "<group>"; };
+		041EC2C91FBCA949005EDF48 /* ArticleData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArticleData.swift; sourceTree = "<group>"; };
+		041EC2CB1FBCAD43005EDF48 /* Backend.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Backend.swift; sourceTree = "<group>"; };
+		04AF35CA1FBCC8C80070FAC1 /* Caches.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Caches.swift; sourceTree = "<group>"; };
+		04AF35CC1FBCD5650070FAC1 /* PostalCodeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostalCodeViewController.swift; sourceTree = "<group>"; };
+		04AF35CE1FBCD78F0070FAC1 /* ResponseCodes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResponseCodes.swift; sourceTree = "<group>"; };
+		04AF35D01FBD93E40070FAC1 /* ShoppingCartViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShoppingCartViewController.swift; sourceTree = "<group>"; };
+		04AF35D21FBD985E0070FAC1 /* PickedUpArticleManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PickedUpArticleManager.swift; sourceTree = "<group>"; };
+		04AF35D41FBD9FF80070FAC1 /* InfoDialog.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = InfoDialog.xib; sourceTree = "<group>"; };
+		04AF35D61FBDA16F0070FAC1 /* PopUpView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopUpView.swift; sourceTree = "<group>"; };
+		04AF35D81FBDB53D0070FAC1 /* CategoriesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoriesView.swift; sourceTree = "<group>"; };
+		04AF35DA1FBDB7BF0070FAC1 /* CategoryStackView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryStackView.swift; sourceTree = "<group>"; };
+		04AF35DC1FBDF3260070FAC1 /* PostOrderViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostOrderViewController.swift; sourceTree = "<group>"; };
+		04AF35DE1FBDFB530070FAC1 /* MaxLengthTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MaxLengthTextField.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -99,7 +131,23 @@
 			children = (
 				041EC28B1FBC3B89005EDF48 /* AppDelegate.swift */,
 				041EC28D1FBC3B89005EDF48 /* ViewController.swift */,
+				04AF35D21FBD985E0070FAC1 /* PickedUpArticleManager.swift */,
+				04AF35D41FBD9FF80070FAC1 /* InfoDialog.xib */,
+				04AF35CC1FBCD5650070FAC1 /* PostalCodeViewController.swift */,
+				04AF35D01FBD93E40070FAC1 /* ShoppingCartViewController.swift */,
+				041EC2C11FBC56A2005EDF48 /* ArticlesDataSource.swift */,
+				04AF35DA1FBDB7BF0070FAC1 /* CategoryStackView.swift */,
+				04AF35DE1FBDFB530070FAC1 /* MaxLengthTextField.swift */,
+				04AF35CA1FBCC8C80070FAC1 /* Caches.swift */,
+				041EC2BF1FBC52BA005EDF48 /* ArticlesCollectionView.swift */,
+				041EC2C91FBCA949005EDF48 /* ArticleData.swift */,
+				041EC2CB1FBCAD43005EDF48 /* Backend.swift */,
 				041EC28F1FBC3B89005EDF48 /* Main.storyboard */,
+				04AF35D81FBDB53D0070FAC1 /* CategoriesView.swift */,
+				041EC2C71FBC5E44005EDF48 /* ArticleCellView.swift */,
+				04AF35D61FBDA16F0070FAC1 /* PopUpView.swift */,
+				04AF35DC1FBDF3260070FAC1 /* PostOrderViewController.swift */,
+				04AF35CE1FBCD78F0070FAC1 /* ResponseCodes.swift */,
 				041EC2921FBC3B89005EDF48 /* Assets.xcassets */,
 				041EC2941FBC3B89005EDF48 /* LaunchScreen.storyboard */,
 				041EC2971FBC3B89005EDF48 /* Info.plist */,
@@ -234,6 +282,7 @@
 			files = (
 				041EC2961FBC3B89005EDF48 /* LaunchScreen.storyboard in Resources */,
 				041EC2931FBC3B89005EDF48 /* Assets.xcassets in Resources */,
+				04AF35D51FBD9FF80070FAC1 /* InfoDialog.xib in Resources */,
 				041EC2911FBC3B89005EDF48 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -260,7 +309,22 @@
 			buildActionMask = 2147483647;
 			files = (
 				041EC28E1FBC3B89005EDF48 /* ViewController.swift in Sources */,
+				04AF35D71FBDA16F0070FAC1 /* PopUpView.swift in Sources */,
+				041EC2C21FBC56A2005EDF48 /* ArticlesDataSource.swift in Sources */,
 				041EC28C1FBC3B89005EDF48 /* AppDelegate.swift in Sources */,
+				041EC2C81FBC5E44005EDF48 /* ArticleCellView.swift in Sources */,
+				041EC2CA1FBCA949005EDF48 /* ArticleData.swift in Sources */,
+				041EC2CC1FBCAD43005EDF48 /* Backend.swift in Sources */,
+				04AF35CD1FBCD5650070FAC1 /* PostalCodeViewController.swift in Sources */,
+				04AF35DF1FBDFB540070FAC1 /* MaxLengthTextField.swift in Sources */,
+				04AF35D91FBDB53D0070FAC1 /* CategoriesView.swift in Sources */,
+				04AF35DD1FBDF3260070FAC1 /* PostOrderViewController.swift in Sources */,
+				04AF35CB1FBCC8C80070FAC1 /* Caches.swift in Sources */,
+				041EC2C01FBC52BA005EDF48 /* ArticlesCollectionView.swift in Sources */,
+				04AF35D11FBD93E40070FAC1 /* ShoppingCartViewController.swift in Sources */,
+				04AF35CF1FBCD78F0070FAC1 /* ResponseCodes.swift in Sources */,
+				04AF35DB1FBDB7BF0070FAC1 /* CategoryStackView.swift in Sources */,
+				04AF35D31FBD985E0070FAC1 /* PickedUpArticleManager.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
