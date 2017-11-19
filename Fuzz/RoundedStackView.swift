@@ -9,7 +9,8 @@
 import Foundation
 import UIKit
 
-public class CategoryStackView: UIStackView {
+//  Stack view with a rounded background layer
+public class RoundedStackView: UIStackView {
     private var _backgroundColor: UIColor?
     
     //  https://stackoverflow.com/questions/34868344/how-to-change-the-background-color-of-uistackview
@@ -34,7 +35,7 @@ public class CategoryStackView: UIStackView {
     override public func layoutSubviews() {
         super.layoutSubviews()
         
-        backgroundLayer.path = UIBezierPath(rect: self.bounds).cgPath
+        backgroundLayer.path = UIBezierPath(roundedRect: self.frame, cornerRadius: self.frame.height / 2).cgPath
         backgroundLayer.fillColor = self.backgroundColor?.cgColor
     }
 }

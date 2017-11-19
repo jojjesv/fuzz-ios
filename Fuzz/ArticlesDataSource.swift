@@ -11,7 +11,6 @@ import UIKit
 
 public class ArticlesDataSource: NSObject, UICollectionViewDataSource {
     public var items: [ArticleData]! = [ArticleData]()
-    public var reloadItem: ((IndexPath) -> Void)?
     
     public func numberOfSections(in collectionView: UICollectionView) -> Int {
         return 1;
@@ -25,6 +24,7 @@ public class ArticlesDataSource: NSObject, UICollectionViewDataSource {
         let view: ArticleCellView = collectionView.dequeueReusableCell(withReuseIdentifier: "article", for: indexPath) as! ArticleCellView
         
         let item = self.items[indexPath.item];
+        view.data = item
         view.nameView.text = item.name
         
         var cost = String(item.cost!)
@@ -46,11 +46,19 @@ public class ArticlesDataSource: NSObject, UICollectionViewDataSource {
                     item.image = img
                     guard img != nil else { return }
                     
-                    self.reloadItem!(indexPath)
+                    collectionView.reloadItems(at: [indexPath])
                 })
             }
         } else {
             view.imageView.image = item.image
+        }
+        
+        view.newBadge.isHidden = !item.isNew!
+        if item.quantity! > 0 {
+            view.quantityBadge.isHidden = false
+            view.quantityLabel.text = "\(item.quantity!) st"
+        } else {
+            view.quantityBadge.isHidden = true
         }
         
         return view

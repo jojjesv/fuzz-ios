@@ -35,7 +35,9 @@ public class PickedUpArticleManager {
     }
     
     public func pickedUpArticleReleased(_ sender: ArticleCellView){
-        viewController.showArticleInfo(forView: sender)
+        //viewController.showArticleInfo(forView: sender)
+        viewController.addToCart(sender.data!)
+        
         print("Released", sender.frame.intersects(infoButtonAbsFrame))
     }
 }
