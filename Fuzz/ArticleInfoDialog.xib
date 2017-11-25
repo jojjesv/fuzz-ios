@@ -1,0 +1,145 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="13529" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13527"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <customFonts key="customFonts">
+        <array key="caveat-bold.ttf">
+            <string>Caveat-Bold</string>
+        </array>
+        <array key="merge_light.ttf">
+            <string>Merge-Light</string>
+        </array>
+    </customFonts>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="ArticleInfoDialog" customModule="Fuzz" customModuleProvider="target">
+            <connections>
+                <outlet property="contentsLabel" destination="QtA-so-vPb" id="JhW-mv-apr"/>
+                <outlet property="descriptionLabel" destination="qQG-xQ-FUr" id="6UB-MH-hpB"/>
+                <outlet property="dialogContent" destination="PXy-ta-X8d" id="Plo-M2-jZg"/>
+                <outlet property="imageView" destination="yZR-eY-iBt" id="65k-hn-koz"/>
+                <outlet property="nameLabel" destination="Uvl-hF-idC" id="K1I-CU-cvG"/>
+                <outlet property="view" destination="iN0-l3-epB" id="tYa-1b-uTb"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="iN0-l3-epB" customClass="DialogBackgroundView" customModule="Fuzz" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="PXy-ta-X8d" userLabel="Content">
+                    <rect key="frame" x="59" y="195.5" width="256" height="277"/>
+                    <subviews>
+                        <stackView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="1000" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="OGg-zx-PPA" userLabel="StackView">
+                            <rect key="frame" x="0.0" y="0.0" width="256" height="277"/>
+                            <subviews>
+                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="wsL-3G-Ax3" userLabel="ImageContainer">
+                                    <rect key="frame" x="24" y="24" width="208" height="72"/>
+                                    <subviews>
+                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="yZR-eY-iBt" userLabel="Image">
+                                            <rect key="frame" x="72" y="0.0" width="64" height="64"/>
+                                            <constraints>
+                                                <constraint firstAttribute="width" constant="64" id="Rlb-it-MrJ"/>
+                                                <constraint firstAttribute="height" constant="64" id="jsh-18-2ps"/>
+                                            </constraints>
+                                        </imageView>
+                                    </subviews>
+                                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    <constraints>
+                                        <constraint firstItem="yZR-eY-iBt" firstAttribute="centerX" secondItem="wsL-3G-Ax3" secondAttribute="centerX" id="0LC-pt-Y0d"/>
+                                        <constraint firstAttribute="height" constant="72" id="cef-Mc-bdL"/>
+                                        <constraint firstItem="yZR-eY-iBt" firstAttribute="top" secondItem="wsL-3G-Ax3" secondAttribute="top" id="rKb-zF-wer"/>
+                                    </constraints>
+                                </view>
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="57" translatesAutoresizingMaskIntoConstraints="NO" id="Uvl-hF-idC" userLabel="ArticleName">
+                                    <rect key="frame" x="24" y="96" width="208" height="26"/>
+                                    <edgeInsets key="layoutMargins" top="8" left="8" bottom="8" right="8"/>
+                                    <fontDescription key="fontDescription" name="Caveat-Bold" family="Caveat" pointSize="22"/>
+                                    <nil key="textColor"/>
+                                    <nil key="highlightedColor"/>
+                                </label>
+                                <view autoresizesSubviews="NO" opaque="NO" clearsContextBeforeDrawing="NO" userInteractionEnabled="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Dlw-PY-Wrb" userLabel="Divider">
+                                    <rect key="frame" x="24" y="122" width="208" height="12"/>
+                                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    <constraints>
+                                        <constraint firstAttribute="height" constant="12" id="aJi-Vb-fpQ"/>
+                                    </constraints>
+                                </view>
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qQG-xQ-FUr" userLabel="ArticleDescription">
+                                    <rect key="frame" x="24" y="134" width="208" height="17.5"/>
+                                    <fontDescription key="fontDescription" name="Merge-Light" family="Merge" pointSize="15"/>
+                                    <nil key="textColor"/>
+                                    <nil key="highlightedColor"/>
+                                </label>
+                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="VY6-zc-7Kb" userLabel="ContentsContainer">
+                                    <rect key="frame" x="24" y="151.5" width="208" height="101.5"/>
+                                    <subviews>
+                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="List24dp" translatesAutoresizingMaskIntoConstraints="NO" id="6WN-dR-Dsj" userLabel="Icon">
+                                            <rect key="frame" x="0.0" y="0.0" width="24" height="24"/>
+                                            <constraints>
+                                                <constraint firstAttribute="width" constant="24" id="Ycx-8x-Ttr"/>
+                                                <constraint firstAttribute="height" constant="24" id="wdN-xj-zGq"/>
+                                            </constraints>
+                                        </imageView>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QtA-so-vPb">
+                                            <rect key="frame" x="30" y="0.0" width="178" height="101.5"/>
+                                            <constraints>
+                                                <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="1" id="xLv-tP-CZB"/>
+                                            </constraints>
+                                            <fontDescription key="fontDescription" name="Merge-Light" family="Merge" pointSize="15"/>
+                                            <nil key="textColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                    </subviews>
+                                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    <constraints>
+                                        <constraint firstItem="QtA-so-vPb" firstAttribute="leading" secondItem="VY6-zc-7Kb" secondAttribute="leading" constant="30" id="Mc2-t5-oq9"/>
+                                        <constraint firstItem="QtA-so-vPb" firstAttribute="top" secondItem="VY6-zc-7Kb" secondAttribute="top" id="UyB-5d-yk2"/>
+                                        <constraint firstItem="6WN-dR-Dsj" firstAttribute="top" secondItem="VY6-zc-7Kb" secondAttribute="top" id="h0t-kz-tvy"/>
+                                        <constraint firstItem="QtA-so-vPb" firstAttribute="height" secondItem="VY6-zc-7Kb" secondAttribute="height" id="k6Y-5l-jNM"/>
+                                        <constraint firstAttribute="trailing" secondItem="QtA-so-vPb" secondAttribute="trailing" id="ovI-Nd-diI"/>
+                                        <constraint firstItem="6WN-dR-Dsj" firstAttribute="leading" secondItem="VY6-zc-7Kb" secondAttribute="leading" id="vER-dR-XwA"/>
+                                    </constraints>
+                                </view>
+                            </subviews>
+                            <constraints>
+                                <constraint firstAttribute="width" constant="256" id="0Ka-B4-hz4"/>
+                                <constraint firstItem="Dlw-PY-Wrb" firstAttribute="top" secondItem="Uvl-hF-idC" secondAttribute="bottom" id="PIm-Jh-mXb"/>
+                                <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="1" id="X6o-aZ-r9g"/>
+                            </constraints>
+                            <edgeInsets key="layoutMargins" top="24" left="24" bottom="24" right="24"/>
+                        </stackView>
+                    </subviews>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <constraints>
+                        <constraint firstItem="OGg-zx-PPA" firstAttribute="width" secondItem="PXy-ta-X8d" secondAttribute="width" id="NMH-wR-GFp"/>
+                        <constraint firstItem="OGg-zx-PPA" firstAttribute="leading" secondItem="PXy-ta-X8d" secondAttribute="leading" id="faF-mm-E7V"/>
+                        <constraint firstItem="OGg-zx-PPA" firstAttribute="height" secondItem="PXy-ta-X8d" secondAttribute="height" id="hom-19-gzT"/>
+                        <constraint firstItem="OGg-zx-PPA" firstAttribute="top" secondItem="PXy-ta-X8d" secondAttribute="top" id="ldi-4W-o77"/>
+                    </constraints>
+                    <userDefinedRuntimeAttributes>
+                        <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                            <integer key="value" value="3"/>
+                        </userDefinedRuntimeAttribute>
+                    </userDefinedRuntimeAttributes>
+                </view>
+            </subviews>
+            <color key="backgroundColor" red="0.12941176470588234" green="0.12941176470588234" blue="0.12941176470588234" alpha="0.5" colorSpace="custom" customColorSpace="sRGB"/>
+            <constraints>
+                <constraint firstItem="PXy-ta-X8d" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="FS0-ud-hOH"/>
+                <constraint firstItem="PXy-ta-X8d" firstAttribute="centerY" secondItem="iN0-l3-epB" secondAttribute="centerY" id="mTE-Ct-kIg"/>
+            </constraints>
+            <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
+            <point key="canvasLocation" x="16" y="-19"/>
+        </view>
+    </objects>
+    <resources>
+        <image name="List24dp" width="32" height="32"/>
+    </resources>
+</document>

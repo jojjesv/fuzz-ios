@@ -36,6 +36,7 @@ public class ArticleCellView: UICollectionViewCell {
     
     private func setupViews(){
         newBadge.transform = CGAffineTransform(rotationAngle: CGFloat.pi * (-10 / 180))
+        imageView.layer.cornerRadius = 12 * UIScreen.main.scale
     }
     
     public func attemptPickUp(){

@@ -13,7 +13,6 @@ class FooterView: UIView {
     
     @IBOutlet weak var about: UIView!
     
-    
     @IBOutlet weak var feedback: UIView!
     
     required init?(coder aDecoder: NSCoder) {
@@ -31,11 +30,13 @@ class FooterView: UIView {
     }
     
     @objc func showAbout(){
-        print("Showing about")
+        let dialog = AboutAppDialog()
+        dialog.show(parent: self.absoluteSuperview()!)
     }
     
     @objc func showFeedback(){
-        print("Showing feedback")
+        let dialog = FeedbackDialog()
+        dialog.show(parent: self.absoluteSuperview()!)
     }
     
     override func layoutSubviews() {

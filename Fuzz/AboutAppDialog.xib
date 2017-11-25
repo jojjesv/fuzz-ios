@@ -1,0 +1,195 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="13529" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13527"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <customFonts key="customFonts">
+        <array key="merge_light.ttf">
+            <string>Merge-Light</string>
+        </array>
+    </customFonts>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="AboutAppDialog" customModule="Fuzz" customModuleProvider="target">
+            <connections>
+                <outlet property="addressLabel" destination="WA2-rt-flI" id="EkA-B9-Tcl"/>
+                <outlet property="dialogContent" destination="KxD-Cg-WCr" id="lwk-Bt-J1h"/>
+                <outlet property="mailLabel" destination="z4K-dK-AFh" id="0j8-La-eGb"/>
+                <outlet property="nameHeader" destination="znL-T9-53K" id="woc-OR-buG"/>
+                <outlet property="phoneLabel" destination="S3o-5d-nJC" id="tSt-eC-oxk"/>
+                <outlet property="versionLabel" destination="EF1-8q-hd7" id="ceV-1P-16m"/>
+                <outlet property="view" destination="ehM-6t-a6y" id="PLF-uF-pyV"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="ehM-6t-a6y" customClass="DialogBackgroundView" customModule="Fuzz" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="KxD-Cg-WCr" userLabel="Content">
+                    <rect key="frame" x="59" y="201.5" width="256" height="264"/>
+                    <subviews>
+                        <stackView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="1000" axis="vertical" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="hY5-77-NKA" userLabel="StackView">
+                            <rect key="frame" x="0.0" y="0.0" width="256" height="264"/>
+                            <subviews>
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Fuzz" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bcV-pq-a94" userLabel="AppHeader">
+                                    <rect key="frame" x="24" y="24" width="208" height="21"/>
+                                    <fontDescription key="fontDescription" name="Merge-Light" family="Merge" pointSize="18"/>
+                                    <nil key="textColor"/>
+                                    <nil key="highlightedColor"/>
+                                </label>
+                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="gj0-ap-rPX" userLabel="Container">
+                                    <rect key="frame" x="24" y="53" width="208" height="50"/>
+                                    <subviews>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="EF1-8q-hd7" userLabel="AppVersion">
+                                            <rect key="frame" x="12" y="8" width="196" height="32"/>
+                                            <constraints>
+                                                <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="1" id="geh-EQ-8r9"/>
+                                            </constraints>
+                                            <fontDescription key="fontDescription" name="Merge-Light" family="Merge" pointSize="14"/>
+                                            <color key="textColor" red="0.12941176470588234" green="0.12941176470588234" blue="0.12941176470588234" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                    </subviews>
+                                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    <constraints>
+                                        <constraint firstItem="EF1-8q-hd7" firstAttribute="top" secondItem="gj0-ap-rPX" secondAttribute="top" constant="8" id="3aJ-6I-Mzf"/>
+                                        <constraint firstAttribute="trailing" secondItem="EF1-8q-hd7" secondAttribute="trailing" id="3g2-Bm-QpK"/>
+                                        <constraint firstItem="EF1-8q-hd7" firstAttribute="height" secondItem="gj0-ap-rPX" secondAttribute="height" constant="-18" id="9Jb-v3-xKV"/>
+                                        <constraint firstItem="EF1-8q-hd7" firstAttribute="leading" secondItem="gj0-ap-rPX" secondAttribute="leading" constant="12" id="dCQ-xP-xlr"/>
+                                    </constraints>
+                                </view>
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Fuzz inc." lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="znL-T9-53K" userLabel="CompanyHeader">
+                                    <rect key="frame" x="24" y="111" width="208" height="21"/>
+                                    <fontDescription key="fontDescription" name="Merge-Light" family="Merge" pointSize="18"/>
+                                    <nil key="textColor"/>
+                                    <nil key="highlightedColor"/>
+                                </label>
+                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="YZx-sW-0h4" userLabel="Container">
+                                    <rect key="frame" x="24" y="140" width="208" height="100"/>
+                                    <subviews>
+                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Location24dp" translatesAutoresizingMaskIntoConstraints="NO" id="tVa-4u-WVV" userLabel="AddressIcon">
+                                            <rect key="frame" x="0.0" y="4" width="24" height="24"/>
+                                            <constraints>
+                                                <constraint firstAttribute="width" constant="24" id="Au3-kU-Zco"/>
+                                                <constraint firstAttribute="height" constant="24" id="BqR-i4-QW2"/>
+                                            </constraints>
+                                            <userDefinedRuntimeAttributes>
+                                                <userDefinedRuntimeAttribute type="color" keyPath="tintColor">
+                                                    <color key="value" red="0.46666666666666667" green="0.70588235294117641" blue="0.88235294117647056" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                </userDefinedRuntimeAttribute>
+                                            </userDefinedRuntimeAttributes>
+                                        </imageView>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Adress" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WA2-rt-flI" userLabel="Address">
+                                            <rect key="frame" x="32" y="4" width="176" height="24"/>
+                                            <constraints>
+                                                <constraint firstAttribute="height" constant="24" id="Qiz-7c-4bp"/>
+                                            </constraints>
+                                            <fontDescription key="fontDescription" name="Merge-Light" family="Merge" pointSize="14"/>
+                                            <color key="textColor" red="0.12941176469999999" green="0.12941176469999999" blue="0.12941176469999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Phone" translatesAutoresizingMaskIntoConstraints="NO" id="PMO-gP-8mg" userLabel="PhoneIcon">
+                                            <rect key="frame" x="0.0" y="40" width="24" height="24"/>
+                                            <constraints>
+                                                <constraint firstAttribute="width" constant="24" id="5i4-wv-EGl"/>
+                                                <constraint firstAttribute="height" constant="24" id="zcq-Vx-vaL"/>
+                                            </constraints>
+                                            <userDefinedRuntimeAttributes>
+                                                <userDefinedRuntimeAttribute type="color" keyPath="tintColor">
+                                                    <color key="value" red="0.46666666666666667" green="0.70588235294117641" blue="0.88235294117647056" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                </userDefinedRuntimeAttribute>
+                                            </userDefinedRuntimeAttributes>
+                                        </imageView>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Telefonnummer" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="S3o-5d-nJC" userLabel="Phone">
+                                            <rect key="frame" x="32" y="40" width="96.5" height="24"/>
+                                            <constraints>
+                                                <constraint firstAttribute="height" constant="24" id="nZK-7x-zmt"/>
+                                            </constraints>
+                                            <fontDescription key="fontDescription" name="Merge-Light" family="Merge" pointSize="14"/>
+                                            <color key="textColor" red="0.12941176469999999" green="0.12941176469999999" blue="0.12941176469999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Mail" translatesAutoresizingMaskIntoConstraints="NO" id="e2n-rA-Ivq" userLabel="MailIcon">
+                                            <rect key="frame" x="0.0" y="76" width="24" height="24"/>
+                                            <constraints>
+                                                <constraint firstAttribute="width" constant="24" id="mFd-4A-6eT"/>
+                                                <constraint firstAttribute="height" constant="24" id="xjF-eU-Knd"/>
+                                            </constraints>
+                                            <userDefinedRuntimeAttributes>
+                                                <userDefinedRuntimeAttribute type="color" keyPath="tintColor">
+                                                    <color key="value" red="0.46666666666666667" green="0.70588235294117641" blue="0.88235294117647056" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                </userDefinedRuntimeAttribute>
+                                            </userDefinedRuntimeAttributes>
+                                        </imageView>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Email" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="z4K-dK-AFh" userLabel="Mail">
+                                            <rect key="frame" x="32" y="76" width="34.5" height="24"/>
+                                            <constraints>
+                                                <constraint firstAttribute="height" constant="24" id="ojS-LG-Edu"/>
+                                            </constraints>
+                                            <fontDescription key="fontDescription" name="Merge-Light" family="Merge" pointSize="14"/>
+                                            <color key="textColor" red="0.12941176469999999" green="0.12941176469999999" blue="0.12941176469999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                    </subviews>
+                                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    <constraints>
+                                        <constraint firstItem="z4K-dK-AFh" firstAttribute="top" secondItem="e2n-rA-Ivq" secondAttribute="top" id="26T-vR-fFO"/>
+                                        <constraint firstItem="S3o-5d-nJC" firstAttribute="leading" secondItem="PMO-gP-8mg" secondAttribute="trailing" constant="8" id="2u2-I2-e23"/>
+                                        <constraint firstItem="PMO-gP-8mg" firstAttribute="leading" secondItem="YZx-sW-0h4" secondAttribute="leading" id="CSg-pN-8AK"/>
+                                        <constraint firstItem="PMO-gP-8mg" firstAttribute="top" secondItem="tVa-4u-WVV" secondAttribute="bottom" constant="12" id="DUx-5W-zqx"/>
+                                        <constraint firstItem="tVa-4u-WVV" firstAttribute="leading" secondItem="YZx-sW-0h4" secondAttribute="leading" id="Foy-nJ-KyT"/>
+                                        <constraint firstItem="S3o-5d-nJC" firstAttribute="top" secondItem="PMO-gP-8mg" secondAttribute="top" id="GpJ-Hi-sn4"/>
+                                        <constraint firstItem="z4K-dK-AFh" firstAttribute="leading" secondItem="e2n-rA-Ivq" secondAttribute="trailing" constant="8" id="Ix5-Sj-2iH"/>
+                                        <constraint firstItem="WA2-rt-flI" firstAttribute="leading" secondItem="tVa-4u-WVV" secondAttribute="trailing" constant="8" id="XWh-KC-Q22"/>
+                                        <constraint firstItem="e2n-rA-Ivq" firstAttribute="top" secondItem="PMO-gP-8mg" secondAttribute="bottom" constant="12" id="bFd-ye-OAI"/>
+                                        <constraint firstAttribute="height" constant="100" id="gGd-ry-1VL"/>
+                                        <constraint firstItem="WA2-rt-flI" firstAttribute="top" secondItem="tVa-4u-WVV" secondAttribute="top" id="gh6-lD-6Rr"/>
+                                        <constraint firstItem="e2n-rA-Ivq" firstAttribute="leading" secondItem="YZx-sW-0h4" secondAttribute="leading" id="hvy-gn-QEy"/>
+                                        <constraint firstAttribute="trailing" secondItem="WA2-rt-flI" secondAttribute="trailing" id="pZ3-lH-F7s"/>
+                                        <constraint firstItem="tVa-4u-WVV" firstAttribute="top" secondItem="YZx-sW-0h4" secondAttribute="top" constant="4" id="ulF-sr-TXm"/>
+                                    </constraints>
+                                    <edgeInsets key="layoutMargins" top="8" left="0.0" bottom="0.0" right="0.0"/>
+                                </view>
+                            </subviews>
+                            <constraints>
+                                <constraint firstAttribute="width" constant="256" id="4tR-1a-Giz"/>
+                                <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="1" id="8Ud-Zp-iMe"/>
+                            </constraints>
+                            <edgeInsets key="layoutMargins" top="24" left="24" bottom="24" right="24"/>
+                        </stackView>
+                    </subviews>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <constraints>
+                        <constraint firstItem="hY5-77-NKA" firstAttribute="width" secondItem="KxD-Cg-WCr" secondAttribute="width" id="XHp-b7-PKF"/>
+                        <constraint firstItem="hY5-77-NKA" firstAttribute="leading" secondItem="KxD-Cg-WCr" secondAttribute="leading" id="dY0-2N-HFS"/>
+                        <constraint firstItem="hY5-77-NKA" firstAttribute="top" secondItem="KxD-Cg-WCr" secondAttribute="top" id="gSk-Rc-yTk"/>
+                        <constraint firstItem="hY5-77-NKA" firstAttribute="height" secondItem="KxD-Cg-WCr" secondAttribute="height" id="vvs-CZ-hIs"/>
+                    </constraints>
+                    <userDefinedRuntimeAttributes>
+                        <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                            <integer key="value" value="3"/>
+                        </userDefinedRuntimeAttribute>
+                    </userDefinedRuntimeAttributes>
+                </view>
+            </subviews>
+            <color key="backgroundColor" red="0.12941176469999999" green="0.12941176469999999" blue="0.12941176469999999" alpha="0.5" colorSpace="custom" customColorSpace="sRGB"/>
+            <constraints>
+                <constraint firstItem="KxD-Cg-WCr" firstAttribute="centerY" secondItem="ehM-6t-a6y" secondAttribute="centerY" id="Qa4-zL-8kc"/>
+                <constraint firstItem="KxD-Cg-WCr" firstAttribute="centerX" secondItem="ehM-6t-a6y" secondAttribute="centerX" id="su2-Bt-Yiq"/>
+            </constraints>
+            <viewLayoutGuide key="safeArea" id="UeQ-nP-u9U"/>
+            <point key="canvasLocation" x="16" y="-19"/>
+        </view>
+    </objects>
+    <resources>
+        <image name="Location24dp" width="32" height="32"/>
+        <image name="Mail" width="32" height="32"/>
+        <image name="Phone" width="32" height="32"/>
+    </resources>
+</document>

@@ -15,6 +15,12 @@ public class CategoriesView: UITableView, UITableViewDelegate {
     public var touchDelegate: CategoriesTouchDelegate?
     public var selectedChanged: (([Category]) -> ())?
     
+    //  Image view in action bar to be tinted along transition value change.
+    public var actionBarLogo: UIImageView!
+    
+    private let actionBarLogoTintFinal = UIColor(named: "ActionBarLogoFinal")
+    private let backgroundFinal = UIColor(named: "CategoriesBackground")
+    
     private var _visible = false
     public var visible: Bool {
         get {
@@ -43,18 +49,48 @@ public class CategoriesView: UITableView, UITableViewDelegate {
             //  clamp and interpolate
             var val = min(max(newValue, 0), 1) - 1
             
-            val = 1 - pow((1 - val), 2)
+            
+            val = min(max(1 - pow((1 - val), 2), -1.4), 0)
+            print("SOMEVAL: \(val)")
             
             for cell in visibleCells {
                 let _cell = cell as! CategoryCell
-                _cell.stackView.frame.origin.x = _cell.stackView.frame.width * val
+                _cell.container.frame.origin.x = _cell.container.frame.width * val
             }
             
             _transitionValue = val + 1
+            
+            isHidden = _transitionValue == 0.4
+            self.transitionActionBarLogo()
+            self.transitionBackground()
         }
         get {
             return _transitionValue
         }
+    }
+    
+    private func transitionActionBarLogo(){
+        let logoFinalColor = actionBarLogoTintFinal
+        let logoFinalComponents = logoFinalColor?.cgColor.components!
+        
+        let val = _transitionValue
+        
+        actionBarLogo.tintColor = UIColor(
+            red: 1 - (1 - logoFinalComponents![0]) * val,
+            green: 1 - (1 - logoFinalComponents![1]) * val,
+            blue: 1 - (1 - logoFinalComponents![2]) * val,
+            alpha: 1
+        )
+    }
+    
+    private func transitionBackground(){
+        let finalColor = backgroundFinal
+        
+        let val = _transitionValue
+        
+        print("Val: \(val)")
+        
+        backgroundColor = finalColor?.withAlphaComponent(val * (finalColor?.cgColor.alpha)!)
     }
     
     //  Determines visibility based on transition value.
@@ -81,22 +117,27 @@ public class CategoriesView: UITableView, UITableViewDelegate {
         let dataSource = self.dataSource as! CategoriesDataSource
         
         let item = dataSource.data[indexPath.item]
-        _selectedCategories.append(item)
         
-        self.selectedChanged!(selectedCategories)
-    }
-    
-    public func tableView(_ tableView: UITableView, didDeselectRowAt indexPath: IndexPath) {
-        let dataSource = self.dataSource as! CategoriesDataSource
+        let cell = cellForRow(at: indexPath) as! CategoryCell
         
-        let item = dataSource.data[indexPath.item]
-        for i in 0..<_selectedCategories.count {
-            if _selectedCategories[i].id == item.id {
-                _selectedCategories.remove(at: i)
-                break
+        if item.enabled {
+            //  Deselect
+            for i in 0..<_selectedCategories.count {
+                if _selectedCategories[i].id == item.id {
+                    _selectedCategories.remove(at: i)
+                    break
+                }
             }
+            
+            item.enabled = false
+        } else {
+            _selectedCategories.append(item)
+            item.enabled = true
         }
         
+        cell.removeIcon.isHidden = !item.enabled
+        
+        //reloadRows(at: [indexPath], with: .none)
         self.selectedChanged!(selectedCategories)
     }
     

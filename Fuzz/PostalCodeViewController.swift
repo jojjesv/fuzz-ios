@@ -14,6 +14,7 @@ class PostalCodeViewController: UIViewController {
     
     private var submittedPostalCode: String?
     
+    @IBOutlet weak var loadingIndicator: UIImageView!
     @IBOutlet weak var submitButton: UIButton!
     @IBOutlet weak var postalCodeInput: UITextField!
     
@@ -21,12 +22,15 @@ class PostalCodeViewController: UIViewController {
     
     @IBOutlet weak var splashLogo: UIImageView!
     @IBOutlet weak var splashLogoText: UIImageView!
-    
     @IBOutlet weak var subheader: UILabel!
-    
     @IBOutlet weak var postSplashView: UIView!
     
+    @IBOutlet weak var footer: FooterView!
+    private var fetchedConfig = false
+    
     public var categoriesJson: [String: Any]?
+    
+    private var logoTopConstraint: NSLayoutConstraint!
     
     @IBAction func submitPressed(_ sender: Any) {
         self.submit(postalCode: postalCodeInput.text!)
@@ -41,8 +45,14 @@ class PostalCodeViewController: UIViewController {
             postalCodeInput.text = postalCode
         }
         
+        footer.isHidden = true
+        footer.alpha = 0
+        
         delayHideSplash()
         fetchConfig()
+        
+        logoTopConstraint = view.constraint(withId: "logoTopY")!
+        NSLayoutConstraint.deactivate([logoTopConstraint])
     }
     
     func delayHideSplash(){
@@ -52,6 +62,11 @@ class PostalCodeViewController: UIViewController {
     }
     
     func hideSplash(){
+        NSLayoutConstraint.activate([logoTopConstraint])
+        
+        let centerConstraint = view.constraint(withId: "logoCenterY")!
+        NSLayoutConstraint.deactivate([centerConstraint])
+        
         let duration: TimeInterval = 0.3
         
         UIView.animate(withDuration: duration, animations: {
@@ -63,7 +78,7 @@ class PostalCodeViewController: UIViewController {
         })
         
         UIView.animate(withDuration: duration * 2.5, animations: {
-            self.splashLogo.frame.origin.y = 48
+            self.splashLogo.frame.origin.y = self.logoTopConstraint.constant
         }, completion: {
             (finished) in
         })
@@ -72,6 +87,10 @@ class PostalCodeViewController: UIViewController {
     }
     
     func animatePostSplashLayout(){
+        if fetchedConfig {
+            animateFooter()
+        }
+        
         postSplashView.isHidden = false
         
         let baseDelay = 0.2
@@ -96,7 +115,7 @@ class PostalCodeViewController: UIViewController {
     }
     
     func wasDeliverable(){
-        //toMain()
+        ShoppingCartViewController.postalCode = submittedPostalCode
         fetchCategories()
     }
     
@@ -124,6 +143,8 @@ class PostalCodeViewController: UIViewController {
     func submit(postalCode: String) {
         submittedPostalCode = postalCode
         
+        showLoading()
+        
         Backend.request(getParams: "out=check_deliverable&postal_code=\(postalCode)", postBody: nil, callback: { (data) in
             let response = String(data: data, encoding: String.Encoding.utf8)!
             
@@ -137,6 +158,40 @@ class PostalCodeViewController: UIViewController {
             default:
                 break
             }
+        })
+    }
+    
+    /// Shows a loading view adjacent to the submit button.
+    func showLoading(){
+        let view = loadingIndicator!
+        
+        view.isHidden = false
+        
+        view.continuousRotate()
+        
+        view.alpha = 0
+        view.transform = CGAffineTransform(scaleX: 0.6, y: 0.6)
+        
+        UIView.animate(withDuration: 0.35) {
+            view.alpha = 1
+            view.transform = CGAffineTransform.identity
+            
+            view.superview!.frame.origin.x += (view.frame.height + 12) / 2
+        }
+    }
+    
+    /// Hies the loading view adjacent to the submit button.
+    func hideLoading(){
+        let view = loadingIndicator!
+        
+        UIView.animate(withDuration: 0.35, animations: {
+            view.alpha = 0
+            view.transform = CGAffineTransform(scaleX: 0.6, y: 0.6)
+            
+            view.superview!.frame.origin.x -= (view.frame.height + 12) / 2
+        }, completion: {
+            (finished) in
+            view.isHidden = true
         })
     }
     
@@ -188,10 +243,53 @@ class PostalCodeViewController: UIViewController {
             
             ShoppingCartViewController.minCost = (json["min_order_cost"] as! NSString).doubleValue
             ShoppingCartViewController.deliveryCost = (json["delivery_cost"] as! NSString).doubleValue
+            
+            AboutAppDialog.data = json
+            
+            self.fetchedConfig = true
+            
+            if !self.postSplashView.isHidden {
+                //  Is post splash
+                DispatchQueue.main.async(execute: self.animateFooter)
+            }
+        }
+    }
+    
+    func animateFooter(){
+        footer.alpha = 0
+        footer.isHidden = false
+        
+        let dy: CGFloat = 24
+        
+        footer.frame.origin.y += dy
+    
+        UIView.setAnimationCurve(.easeOut)
+        UIView.animate(withDuration: 0.3) {
+            self.footer.alpha = 1
+            self.footer.frame.origin.y -= dy
         }
     }
     
     func backendError(){
-        //  TODO: Handle backend error
+        hideLoading()
+        
+        let dialog = TextDialog()
+        dialog.message = "Fuzz kan inte nås just nu."
+        dialog.header = "Nätverksfel"
+        
+        dialog.show(parent: view)
+    }
+}
+
+extension UIView {
+    public func constraint(withId: String) -> NSLayoutConstraint? {
+        for constraint in self.constraints {
+            print("ID: \(constraint.identifier)")
+            if constraint.identifier == withId {
+                return constraint
+            }
+        }
+        
+        return nil
     }
 }

@@ -16,7 +16,9 @@ public class Category {
     public var foregroundColor: UIColor
     public var backgroundColor: UIColor
     public var background: UIImage?
-    public var enabled = true
+    
+    //  Whether enabled/selected for fetch.
+    public var enabled = false
     
     init(id: Int, name: String, foregroundColor: UIColor, backgroundColor: UIColor, background: UIImage?) {
         self.id = id

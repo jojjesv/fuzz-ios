@@ -13,6 +13,7 @@ import UIKit
 //  Manages categories gestures.
 class ArticlesCollectionView: UICollectionView, UICollectionViewDelegate, CategoriesTouchDelegate {
     
+    public var background: ArticlesBackground!
     private let scrollSlop = CGFloat(2)
     private var initialTouch: CGPoint?
     private var oldTouch: CGPoint?
@@ -24,6 +25,12 @@ class ArticlesCollectionView: UICollectionView, UICollectionViewDelegate, Catego
     private var fetchedLastArticles = false
     private var oldPickedUpLocation: CGPoint?
     
+    public var categoriesHeader: UIView?
+    private var initialCategoriesHeaderOrigin: CGPoint?
+    
+    private var headerHideScrollThreshold: CGFloat! = 24.0
+    private var oldScrollY: CGFloat! = 0.0
+    
     //  View parent for picked up articles.
     public var pickedUpArticleParent: UIView?
     
@@ -31,6 +38,9 @@ class ArticlesCollectionView: UICollectionView, UICollectionViewDelegate, Catego
     public var pickedUpArticle: ArticleCellView? {
         set {
             if scrollDirection == .none {
+                if newValue != nil {
+                    self.viewController?.hideDragHints()
+                }
                 _pickedUpArticle = newValue
             }
         } get {
@@ -44,6 +54,7 @@ class ArticlesCollectionView: UICollectionView, UICollectionViewDelegate, Catego
     
     private var hasPickedUpArticle = false
     private var longPressGestureRecognizer: UILongPressGestureRecognizer!
+    private var d: TestDelegate?
     
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
@@ -53,15 +64,27 @@ class ArticlesCollectionView: UICollectionView, UICollectionViewDelegate, Catego
     
     private func setupArticlesLongPress(){
         longPressGestureRecognizer = UILongPressGestureRecognizer(target: self, action: #selector(attemptPickUpArticle))
-        longPressGestureRecognizer.minimumPressDuration = 1
+        longPressGestureRecognizer.minimumPressDuration = 0.25
         longPressGestureRecognizer.cancelsTouchesInView = false
+        d = TestDelegate()
+        longPressGestureRecognizer.delegate = d
         addGestureRecognizer(longPressGestureRecognizer)
     }
     
+    private class TestDelegate: NSObject, UIGestureRecognizerDelegate {
+        func gestureRecognizer(_ gestureRecognizer: UIGestureRecognizer, shouldRecognizeSimultaneouslyWith otherGestureRecognizer: UIGestureRecognizer) -> Bool {
+            return true
+        }
+    }
+    
+    
     //  Searches for an article to pick up
     @objc private func attemptPickUpArticle(){
-        if longPressGestureRecognizer.state != .changed {
-            let location = initialTouch!
+        if longPressGestureRecognizer.state == .began {
+            let location = longPressGestureRecognizer.location(in: self)
+            //location.x += contentOffset.x
+            //location.y += contentOffset.y
+            
             oldPickedUpLocation = nil
             
             for cell in visibleCells {
@@ -70,13 +93,15 @@ class ArticlesCollectionView: UICollectionView, UICollectionViewDelegate, Catego
                     break
                 }
             }
-            
-            if longPressGestureRecognizer.state == .ended {
-                //  release
-                pickedUpArticle!.releaseIfPickedUp()
+        } else if longPressGestureRecognizer.state == .ended {
+            //  release
+            if let pickedUp = pickedUpArticle {
+                pickedUp.releaseIfPickedUp()
                 pickedUpArticle = nil
             }
         } else {
+            guard let pickedUp = pickedUpArticle else { return }
+            
             let location = longPressGestureRecognizer.location(in: self)
             if oldPickedUpLocation == nil {
                 oldPickedUpLocation = location
@@ -87,17 +112,53 @@ class ArticlesCollectionView: UICollectionView, UICollectionViewDelegate, Catego
             
             oldPickedUpLocation = location
             
-            pickedUpArticle!.frame.origin.x += dx
-            pickedUpArticle!.frame.origin.y += dy
+            pickedUp.frame.origin.x += dx
+            pickedUp.frame.origin.y += dy
+            
+            viewController?.pickedUpArticleMoved(pickedUp)
         }
     }
     
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
         let nextPageOffsetThreshold = scrollView.contentSize.height - scrollView.frame.height
         
-        if scrollView.contentOffset.y >= nextPageOffsetThreshold {
+        let scrollY = scrollView.contentOffset.y
+        
+        if scrollY >= nextPageOffsetThreshold {
             fetchNextArticlesPage()
         }
+        
+        let headerThreshold = headerHideScrollThreshold
+        if scrollY >= headerThreshold! && oldScrollY! < headerThreshold! {
+            changeHeaderVisibility(visible: false)
+        } else if scrollY < headerThreshold! && oldScrollY! >= headerThreshold! {
+            changeHeaderVisibility(visible: true)
+        }
+        
+        let deltaScroll = scrollY - oldScrollY
+        
+        background.offset(by: -deltaScroll)
+        
+        oldScrollY = scrollY
+    }
+    
+    private func changeHeaderVisibility(visible: Bool){
+        let header = categoriesHeader!
+        header.isHidden = false
+        
+        if initialCategoriesHeaderOrigin == nil {
+            initialCategoriesHeaderOrigin = header.frame.origin
+        }
+        
+        UIView.animate(withDuration: 0.3, animations: {
+            header.frame.origin.y = (self.initialCategoriesHeaderOrigin?.y)! - (visible ? 0.0 : header.frame.height)
+            header.alpha = visible ? 1 : 0
+        }, completion: visible ? nil : {
+            (finished) in
+            if finished {
+                header.isHidden = true
+            }
+        })
     }
     
     private func fetchNextArticlesPage(){
